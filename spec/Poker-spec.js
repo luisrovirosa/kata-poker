@@ -37,6 +37,11 @@ describe("Poker", function(){
                     var result = poker.play('Black: 2H 3D 5S 7C 9D White: 2C 3H 4S 8C 9H');
                     expect(result).toContain('White wins.');
                 });
+                it("Only the smaller value is different", function(){
+                    var poker = new Poker();
+                    var result = poker.play('Black: 3H 4D 5S 7C 9D White: 2C 4H 5S 7C 9H');
+                    expect(result).toContain('Black wins.');
+                });
             });
         });
 
