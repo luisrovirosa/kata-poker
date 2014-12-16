@@ -12,5 +12,5 @@ gulp.task('default', function(){
 
 gulp.task('jasmine', function () {
     return gulp.src(['spec/*.js'])
-        .pipe(jasmine({verbose:true}));
+        .pipe(jasmine({verbose:true, includeStackTrace: true}));
 });
