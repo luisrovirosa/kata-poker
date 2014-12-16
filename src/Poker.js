@@ -13,10 +13,8 @@ function getCardsOrdered(line, color) {
     var cards = line.split(' ');
     return cards.slice(color, color + 5).sort(compareCards);
 }
-Poker.prototype.play = function (line) {
-    var blackCards = getCardsOrdered(line, this.BLACK);
-    var whiteCards = getCardsOrdered(line, this.WHITE);
 
+function getWinner(blackCards, whiteCards){
     for (var i = 0; i < 5; i++) {
         var result = compareCards(blackCards[i], whiteCards[i]);
         if (result < 0) {
@@ -25,6 +23,13 @@ Poker.prototype.play = function (line) {
             return "White wins.";
         }
     }
+}
+
+Poker.prototype.play = function (line) {
+    var blackCards = getCardsOrdered(line, this.BLACK);
+    var whiteCards = getCardsOrdered(line, this.WHITE);
+
+   return getWinner(blackCards, whiteCards);
 };
 
 
