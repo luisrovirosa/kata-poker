@@ -20,9 +20,9 @@ function getCards(color, line) {
 function getWinner(blackHand, whiteHand){
     var result = blackHand.compareTo(whiteHand);
     if (result < 0) {
-        return "Black wins.";
-    } else if (result > 0) {
         return "White wins.";
+    } else if (result > 0) {
+        return "Black wins.";
     }
     return "";
 }
