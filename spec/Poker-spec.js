@@ -20,6 +20,16 @@ describe("Poker", function(){
                 var result = poker.play('Black: 2H 3D 5S 9C JD White: 2C 3H 4S 8C QH');
                 expect(result).toContain('White wins.');
             });
+            it("Jack is higher than 10", function(){
+                var poker = new Poker();
+                var result = poker.play('Black: 2H 3D 5S 9C JD White: 2C 3H 4S 8C TH');
+                expect(result).toContain('Black wins.');
+            });
+            it("10 is higher than 9", function(){
+                var poker = new Poker();
+                var result = poker.play('Black: 2H 3D 5S 9C 9D White: 2C 3H 4S 8C TH');
+                expect(result).toContain('White wins.');
+            });
         });
 
 
