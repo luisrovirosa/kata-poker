@@ -13,12 +13,11 @@ Hand.create = function(handString){
 };
 
 Hand.prototype.compareTo = function(otherHand){
-    for (var i = 0; i < 5; i++) {
-        var result = this.cards[i].compareTo(otherHand.cards[i]);
-        if (result != 0){
-            return result;
-        }
-    }
+    var i = 0, result = 0;
+    do {
+        result = this.cards[i].compareTo(otherHand.cards[i]);
+    } while (result == 0 && ++i < 5);
+    return result;
 };
 
 module.exports = Hand;
