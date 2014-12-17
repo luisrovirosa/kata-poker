@@ -126,7 +126,7 @@ describe("Poker", function(){
             var result = poker.play('Black: 2H 3H 4C 5C 6C White: AH AD AD 3C 5S');
             expect(result).toContain(BLACK_WINS);
         });
-        it("Straight with higher card wins", function(){
+        it("The higher card wins when both hands has Straight", function(){
             var result = poker.play('Black: 2H 3H 4C 5C 6C White: 4H 5D 6D 7C 8S');
             expect(result).toContain(WHITE_WINS);
         });
@@ -140,6 +140,10 @@ describe("Poker", function(){
         it("All the cards of the same suit are higher than straight", function () {
             var result = poker.play('Black: 2H 3H 4C 5C 6C White: 2D 3D 5D 7D 8D');
             expect(result).toContain(WHITE_WINS);
+        });
+        it("The higher card wins then both hands has Flush", function () {
+            var result = poker.play('Black: 2H 3H 4H 9H 6H White: 2D 3D 5D 7D 8D');
+            expect(result).toContain(BLACK_WINS);
         });
     });
 });

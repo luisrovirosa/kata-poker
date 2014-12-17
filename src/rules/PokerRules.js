@@ -9,7 +9,6 @@ function PokerRules(){
     this.rules = [new Flush(), new Straight(), new RuleThreeOfAKind(), new RuleTwoPairs(), new RuleTwoPairs(), new RulePair(), new HighCard()];
 }
 
-
 PokerRules.prototype.compare = function(hand, otherHand){
     for (var i=0; this.rules.length; i++){
         var rule = this.rules[i];
