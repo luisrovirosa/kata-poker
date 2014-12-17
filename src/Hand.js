@@ -1,11 +1,13 @@
 var Card = require('../src/Card.js');
 var CompareValues = require('../src/rules/CompareValues.js');
 var RuleThreeOfAKind = require('../src/rules/ThreeOfAKind.js');
+var RuleTwoPairs = require('../src/rules/TwoPairs.js');
 
 function Hand(){
     this.cards = [];
     this.compareValues = new CompareValues();
     this.ruleThreeOfAKind = new RuleThreeOfAKind();
+    this.ruleTwoPairs = new RuleTwoPairs();
 }
 
 Hand.create = function(handString){
@@ -24,6 +26,10 @@ Hand.prototype.compareTo = function(otherHand){
 
     // Rules
     result = this.ruleThreeOfAKind.compare(this, otherHand);
+    if (result){
+        return result;
+    }
+    result = this.ruleTwoPairs.compare(this, otherHand);
     if (result){
         return result;
     }

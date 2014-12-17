@@ -3,13 +3,16 @@ var CompareValues = require('./CompareValues.js');
 function ThreeOfAKind(){
     this.compareValues = new CompareValues();
 }
+function belongs(numberOfCards){
+    return numberOfCards[0]['v'] == 3;
+}
 
 ThreeOfAKind.prototype.compare = function (hand, otherHand){
     var numberOfCards = hand.calculateNumberOfCards();
     var numberOfCardsOtherHand = otherHand.calculateNumberOfCards();
 
     if (numberOfCards[0]['v'] == 3 ||  numberOfCardsOtherHand[0]['v'] == 3){
-        var diff = numberOfCards[0]['v'] - numberOfCardsOtherHand[0]['v'];
+        var diff = belongs(numberOfCards) - belongs(numberOfCardsOtherHand);
         if (diff){
             return diff;
         }

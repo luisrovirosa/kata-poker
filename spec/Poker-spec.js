@@ -92,7 +92,7 @@ describe("Poker", function(){
     });
 
     describe("Two pairs wins is higher than pair", function(){
-        it("Two pairs 3 wins a pair (even if the pair is higher)", function(){
+        it("Two pairs wins a pair (even if the pair is higher)", function(){
            var result = poker.play('Black: 2H 2D 3D 3C 5S White: 3H AH AS 8C 2C');
            expect(result).toContain(BLACK_WINS);
         });
