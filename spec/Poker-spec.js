@@ -104,6 +104,10 @@ describe("Poker", function(){
             var result = poker.play('Black: 2H 2D 7D 7C 5S White: 2H 3H 4S 5C AC');
             expect(result).toContain(BLACK_WINS);
         });
+        it("In case of draw in double pair wins the higher remaining card", function(){
+            var result = poker.play('Black: 2H 2D 3D 3C AS White: 2C 2S 3S 3H KC');
+            expect(result).toContain(BLACK_WINS);
+        });
     });
 
     describe("Three of a king is higher than Two pairs", function(){
