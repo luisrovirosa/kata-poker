@@ -20,7 +20,7 @@ Hand.create = function(handString){
 };
 
 Hand.prototype.compareTo = function(otherHand){
-    return this.rules.compare(this,otherHand);
+    return this.rules.compare(this, otherHand);
 };
 
 Hand.prototype.calculateNumberOfCards = function(){

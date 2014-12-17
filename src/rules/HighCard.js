@@ -1,32 +1,16 @@
-var CompareValues = require('./CompareValues.js');
+var BaseRule = require('./BaseRule.js');
 
 function HighCard(){
-    this.compareValues = new CompareValues();
 
 }
+HighCard.prototype = new BaseRule();
 
-function belongs(numberOfCards){
+HighCard.prototype.belongs = function(numberOfCards){
     return true;
-}
-
-HighCard.prototype.compare = function(hand, otherHand){
-    var numberOfCards = hand.calculateNumberOfCards();
-    var numberOfCardsOtherHand = otherHand.calculateNumberOfCards();
-
-    if (belongs(numberOfCards) || belongs(numberOfCardsOtherHand)){
-        var diff = belongs(numberOfCards) - belongs(numberOfCardsOtherHand);
-        if (diff){
-            return diff;
-        }
-        var until = Math.min(numberOfCards.length, numberOfCardsOtherHand.length);
-        for (i=0; i < until; i++){
-            var result = this.compareValues.compare(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
-            if (result){
-                return result;
-            }
-        }
-    }
 };
 
+HighCard.prototype.until = function(){
+    return 999;
+};
 
 module.exports = HighCard;
