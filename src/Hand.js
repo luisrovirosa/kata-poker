@@ -1,14 +1,10 @@
 var Card = require('../src/Card.js');
 var CompareValues = require('../src/rules/CompareValues.js');
 
-
-var Rules = require('../src/rules/PokerRules.js');
-
 function Hand(){
     this.cards = [];
     this.cardsByGroups = [];
     this.compareValues = new CompareValues();
-    this.rules = new Rules();
     this.groupCards = function(){
         var numberOfCards = {};
         this.cards.forEach(function(card){
@@ -30,14 +26,10 @@ Hand.create = function(handString){
     var hand = new Hand();
     hand.cards = handString.split(' ').map(function(cardString){
         return Card.create(cardString);
-    }).sort(Card.sortDesc);
+    });
     hand.cardsByGroups = hand.groupCards();
     //console.log(hand.cardsByGroups);
     return hand;
-};
-
-Hand.prototype.compareTo = function(otherHand){
-    return this.rules.compare(this, otherHand);
 };
 
 Hand.prototype.getCardsByGroups = function(){
