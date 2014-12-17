@@ -3,6 +3,7 @@ var CompareValues = require('../src/rules/CompareValues.js');
 var RuleThreeOfAKind = require('../src/rules/ThreeOfAKind.js');
 var RuleTwoPairs = require('../src/rules/TwoPairs.js');
 var RulePair = require('../src/rules/Pair.js');
+var HighCard = require('../src/rules/HighCard.js');
 
 function Hand(){
     this.cards = [];
@@ -10,6 +11,7 @@ function Hand(){
     this.ruleThreeOfAKind = new RuleThreeOfAKind();
     this.ruleTwoPairs = new RuleTwoPairs();
     this.rulePair = new RulePair();
+    this.ruleHighCard = new HighCard();
 }
 
 Hand.create = function(handString){
@@ -24,7 +26,7 @@ Hand.prototype.compareTo = function(otherHand){
     // Count the number of cards
     var numberOfCards = this.calculateNumberOfCards();
     var numberOfCardsOtherHand = otherHand.calculateNumberOfCards();
-    var i, result;
+    var result;
 
     // Rules
     result = this.ruleThreeOfAKind.compare(this, otherHand);
@@ -41,20 +43,14 @@ Hand.prototype.compareTo = function(otherHand){
         return result;
     }
 
+    result = this.ruleHighCard.compare(this, otherHand);
+    if (result){
+        return result;
+    }
+
     result = numberOfCards.length - numberOfCardsOtherHand.length;
     if (result){
         return -(result);
-    }
-    var until = Math.min(numberOfCards.length, numberOfCardsOtherHand.length);
-    for (i=0; i < until; i++){
-        result = numberOfCards[i]['v'] - numberOfCardsOtherHand[i]['v'];
-        if (result){
-            return result;
-        }
-        result = this.compareValues.compare(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
-        if (result){
-            return result;
-        }
     }
 };
 
