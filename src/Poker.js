@@ -27,7 +27,7 @@ Poker.prototype.getWinner = function(blackHand, whiteHand){
     } else if (result > 0) {
         return "Black wins.";
     }
-    return "";
+    return "Tie.";
 };
 
 module.exports = Poker;

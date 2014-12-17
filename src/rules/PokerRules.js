@@ -24,7 +24,7 @@ function PokerRules(){
 }
 
 PokerRules.prototype.compare = function(hand, otherHand){
-    for (var i=0; this.rules.length; i++){
+    for (var i=0; i < this.rules.length; i++){
         var rule = this.rules[i];
         var result = rule.compare(hand, otherHand);
         if (result){

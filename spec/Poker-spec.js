@@ -8,6 +8,7 @@ describe("Poker", function(){
 
     var BLACK_WINS = 'Black wins.';
     var WHITE_WINS = 'White wins.';
+    var TIE = 'Tie.';
 
     describe("Win with high card", function(){
         describe("says which color wins", function () {
@@ -49,11 +50,12 @@ describe("Poker", function(){
                     expect(result).toContain(WHITE_WINS);
                 });
             });
-        });
-
-        xit("final test", function(){
-            var result = poker.play('Black: 2H 3D 5S 9C KD White: 2C 3H 4S 8C AH');
-            expect(result).toBe('White wins. - with high card: Ace');
+            describe("when there is no winner", function(){
+                it("Receive the same result", function(){
+                    var result = poker.play('Black: 2H 4D 5S 7C 9D White: 2C 4H 5S 7C 9H');
+                    expect(result).toContain(TIE);
+                });
+            });
         });
     });
 
@@ -182,6 +184,25 @@ describe("Poker", function(){
         it("The higher straight flush wins when both hands has straight flush", function () {
             var result = poker.play('Black: 2D 3D 4D 5D 6D White: 3C 4C 5C 6C 7C');
             expect(result).toContain(WHITE_WINS);
+        });
+    });
+
+    xdescribe("Suggested test cases - with strategy used to win", function(){
+        it("White wins. - with high card: Ace", function(){
+            var result = poker.play('Black: 2H 3D 5S 9C KD White: 2C 3H 4S 8C AH');
+            expect(result).toBe('White wins. - with high card: Ace');
+        });
+        it("Black wins. - with full house", function(){
+            var result = poker.play('Black: 2H 4S 4C 2D 4H White: 2S 8S AS QS 3S');
+            expect(result).toBe('Black wins. - with full house');
+        });
+        it("Black wins. - with high card: 9", function(){
+            var result = poker.play('Black: 2H 3D 5S 9C KD White: 2C 3H 4S 8C KH');
+            expect(result).toBe('Black wins. - with high card: 9');
+        });
+        it("Tie.", function(){
+            var result = poker.play('Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH');
+            expect(result).toBe('Tie.');
         });
     });
 
