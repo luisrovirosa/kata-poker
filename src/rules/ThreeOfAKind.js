@@ -1,11 +1,11 @@
 var BaseRule = require('./BaseRule.js');
 
-function ThreeOfAKind(){
+function ThreeOfAKind() {
 }
 ThreeOfAKind.prototype = new BaseRule();
 
 
-ThreeOfAKind.prototype.belongs= function (hand){
+ThreeOfAKind.prototype.belongs = function (hand) {
     return hand.getCardGroup(0).v == 3;
 };
 

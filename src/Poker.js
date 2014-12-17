@@ -5,14 +5,13 @@ function Poker() {
     this.BLACK = 1;
     this.WHITE = 7;
     this.rules = new Rules();
-
 }
 
 Poker.prototype.play = function (line) {
     var blackHand = Hand.create(getCards(this.BLACK, line));
     var whiteHand = Hand.create(getCards(this.WHITE, line));
 
-   return this.getWinner(blackHand, whiteHand);
+    return this.getWinner(blackHand, whiteHand);
 };
 
 function getCards(color, line) {
@@ -20,7 +19,7 @@ function getCards(color, line) {
     return cards.slice(color, color + 5).join(' ');
 }
 
-Poker.prototype.getWinner = function(blackHand, whiteHand){
+Poker.prototype.getWinner = function (blackHand, whiteHand) {
     var result = this.rules.compare(blackHand, whiteHand);
     if (result < 0) {
         return "White wins.";

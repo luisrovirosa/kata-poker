@@ -8,7 +8,7 @@ var RuleTwoPairs = require('./TwoPairs.js');
 var RulePair = require('./Pair.js');
 var HighCard = require('./HighCard.js');
 
-function PokerRules(){
+function PokerRules() {
     this.rules = [
         new StraightFlush(),
         new FourOfAKind(),
@@ -23,11 +23,11 @@ function PokerRules(){
     ];
 }
 
-PokerRules.prototype.compare = function(hand, otherHand){
-    for (var i=0; i < this.rules.length; i++){
+PokerRules.prototype.compare = function (hand, otherHand) {
+    for (var i = 0; i < this.rules.length; i++) {
         var rule = this.rules[i];
         var result = rule.compare(hand, otherHand);
-        if (result){
+        if (result) {
             return result;
         }
     }

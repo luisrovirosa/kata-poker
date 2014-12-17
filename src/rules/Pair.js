@@ -1,10 +1,10 @@
 var BaseRule = require('./BaseRule.js');
 
-function Pair(){
+function Pair() {
 }
 Pair.prototype = new BaseRule();
 
-Pair.prototype.belongs = function(hand){
+Pair.prototype.belongs = function (hand) {
     return hand.getCardGroup(0).v == 2;
 };
 
