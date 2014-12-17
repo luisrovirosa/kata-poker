@@ -1,3 +1,4 @@
+var StraightFlush = require('./StraightFlush.js');
 var FourOfAKind = require('./FourOfAKind.js');
 var FullHouse = require('./FullHouse.js');
 var Flush = require('./Flush.js');
@@ -9,6 +10,7 @@ var HighCard = require('./HighCard.js');
 
 function PokerRules(){
     this.rules = [
+        new StraightFlush(),
         new FourOfAKind(),
         new FullHouse(),
         new Flush(),
