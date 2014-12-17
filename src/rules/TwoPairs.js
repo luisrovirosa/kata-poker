@@ -5,8 +5,9 @@ function TwoPairs(){
 }
 TwoPairs.prototype = new BaseRule();
 
-TwoPairs.prototype.belongs = function(numberOfCards){
-    return numberOfCards[0]['v'] == 2 && numberOfCards[1]['v'] == 2;
+TwoPairs.prototype.belongs = function(hand){
+    return hand.getCardGroup(0).v == 2
+        && hand.getCardGroup(1).v == 2;
 };
 
 TwoPairs.prototype.until = function(){

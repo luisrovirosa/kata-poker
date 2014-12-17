@@ -5,7 +5,7 @@ function HighCard(){
 }
 HighCard.prototype = new BaseRule();
 
-HighCard.prototype.belongs = function(numberOfCards){
+HighCard.prototype.belongs = function(hand){
     return true;
 };
 
