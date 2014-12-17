@@ -1,3 +1,4 @@
+var FourOfAKind = require('./FourOfAKind.js');
 var FullHouse = require('./FullHouse.js');
 var Flush = require('./Flush.js');
 var Straight = require('./Straight.js');
@@ -7,7 +8,17 @@ var RulePair = require('./Pair.js');
 var HighCard = require('./HighCard.js');
 
 function PokerRules(){
-    this.rules = [new FullHouse(), new Flush(), new Straight(), new RuleThreeOfAKind(), new RuleTwoPairs(), new RuleTwoPairs(), new RulePair(), new HighCard()];
+    this.rules = [
+        new FourOfAKind(),
+        new FullHouse(),
+        new Flush(),
+        new Straight(),
+        new RuleThreeOfAKind(),
+        new RuleTwoPairs(),
+        new RuleTwoPairs(),
+        new RulePair(),
+        new HighCard()
+    ];
 }
 
 PokerRules.prototype.compare = function(hand, otherHand){
