@@ -90,4 +90,11 @@ describe("Poker", function(){
             expect(result).toContain(WHITE_WINS);
         });
     });
+
+    describe("Two pairs wins a pair", function(){
+       it("Two pairs of 2 and 3 wins a pair of aces", function(){
+           var result = poker.play('Black: 2H 2D 3D 3C 5S White: 3H AH AS 8C 2C');
+           expect(result).toContain(BLACK_WINS);
+       });
+    });
 });

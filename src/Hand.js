@@ -25,7 +25,9 @@ Hand.prototype.compareTo = function(otherHand){
     var i;
     var until = Math.min(numberOfCards.length, numberOfCardsOtherHand.length);
     for (i=0; i < until; i++){
-        if (numberOfCards[i]['v'] != numberOfCardsOtherHand[i]['v']){
+        if (numberOfCards.length != numberOfCardsOtherHand.length){
+            return -(numberOfCards.length - numberOfCardsOtherHand.length);
+        } else if (numberOfCards[i]['v'] != numberOfCardsOtherHand[i]['v']){
             return numberOfCards[i]['v'] - numberOfCardsOtherHand[i]['v'];
         } else {
             var diff = compareCards(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
