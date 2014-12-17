@@ -100,5 +100,10 @@ describe("Poker", function(){
             var result = poker.play('Black: 2H 2D 7D 7C 5S White: 3H 3H 4S 4C AC');
             expect(result).toContain(BLACK_WINS);
         });
+        it("Two Pair wins a no pair", function(){
+            var result = poker.play('Black: 2H 2D 7D 7C 5S White: 2H 3H 4S 5C AC');
+            expect(result).toContain(BLACK_WINS);
+        });
     });
+
 });
