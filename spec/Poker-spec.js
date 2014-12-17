@@ -91,7 +91,7 @@ describe("Poker", function(){
         });
     });
 
-    describe("Two pairs wins a pair", function(){
+    describe("Two pairs wins is higher than pair", function(){
         it("Two pairs of 2 and 3 wins a pair of aces", function(){
            var result = poker.play('Black: 2H 2D 3D 3C 5S White: 3H AH AS 8C 2C');
            expect(result).toContain(BLACK_WINS);
@@ -104,6 +104,18 @@ describe("Poker", function(){
             var result = poker.play('Black: 2H 2D 7D 7C 5S White: 2H 3H 4S 5C AC');
             expect(result).toContain(BLACK_WINS);
         });
+    });
+
+    describe("Three of a king is higher than Two pairs", function(){
+        it("Three of 2 wins two pair of Aces and Kings", function(){
+            var result = poker.play('Black: 2H 2D 2D 3C 5S White: QH QH KS KC AC');
+            expect(result).toContain(BLACK_WINS);
+        });
+        it("Three of A wins three of K", function(){
+            var result = poker.play('Black: QH KH KS KC AC White: AH AD AD 3C 5S');
+            expect(result).toContain(WHITE_WINS);
+        });
+
     });
 
 });
