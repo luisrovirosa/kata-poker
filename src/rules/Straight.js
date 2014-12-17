@@ -13,8 +13,4 @@ Straight.prototype.belongs = function(hand){
     return true;
 };
 
-Straight.prototype.until = function(){
-    return 1;
-};
-
 module.exports = Straight;

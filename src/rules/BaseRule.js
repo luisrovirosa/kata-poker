@@ -23,4 +23,8 @@ BaseRule.prototype.compare = function(hand, otherHand){
     }
 };
 
+BaseRule.prototype.until = function(){
+    return 1;
+};
+
 module.exports = BaseRule;
