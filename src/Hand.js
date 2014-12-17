@@ -14,49 +14,44 @@ Hand.create = function(handString){
     return hand;
 };
 
-
-var cardOrder = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"];
-var compareCards = function(a,b){
-    return cardOrder.indexOf(a) - cardOrder.indexOf(b);
-};
-
 Hand.prototype.compareTo = function(otherHand){
     // Count the number of cards
-    var numberOfCards = calculateNumberOfCards(this.cards);
-    var numberOfCardsOtherHand = calculateNumberOfCards(otherHand.cards);
+    var numberOfCards = this.calculateNumberOfCards();
+    var numberOfCardsOtherHand = otherHand.calculateNumberOfCards();
     var i;
 
     var until = Math.min(numberOfCards.length, numberOfCardsOtherHand.length);
+    var result = numberOfCards.length - numberOfCardsOtherHand.length;
+    if (result){
+        return -(result);
+    }
     for (i=0; i < until; i++){
-        var result = numberOfCards.length - numberOfCardsOtherHand.length;
-        if (result){
-            return -(result);
-        }
         result = numberOfCards[i]['v'] - numberOfCardsOtherHand[i]['v'];
         if (result){
             return result;
         }
-        result = this.ruleCompareValues.resolve(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
+        result = this.ruleCompareValues.compare(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
         if (result){
             return result;
         }
     }
 };
 
-function calculateNumberOfCards(cards){
+Hand.prototype.calculateNumberOfCards = function(){
     var numberOfCards = {};
-    cards.forEach(function(card){
+    this.cards.forEach(function(card){
         numberOfCards[card.getValue()] = numberOfCards[card.getValue()] ? numberOfCards[card.getValue()] + 1: 1;
     });
+    var self = this;
     var sortDescByNumberOfCards = function(a, b) {
-        return -(numberOfCards[a]-numberOfCards[b])*100 - compareCards(a,b);
+        return -(numberOfCards[a]-numberOfCards[b])*100 - self.ruleCompareValues.compare(a, b);
     };
     numberOfCards = Object.keys(numberOfCards).sort(sortDescByNumberOfCards).map(function(k){
         return {k: k, v:numberOfCards[k]};
     });
     //console.log(numberOfCards);
     return numberOfCards;
-}
+};
 
 
 module.exports = Hand;
