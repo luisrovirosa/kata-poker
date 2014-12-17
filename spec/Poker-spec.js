@@ -43,6 +43,12 @@ describe("Poker", function(){
                     expect(result).toContain(BLACK_WINS);
                 });
             });
+            describe("when the cards are not ordered", function(){
+                it("Receive the same result", function(){
+                    var result = poker.play('Black: 2H 9D 3D 7C 5S White: 3H 9H 4S 8C 2C');
+                    expect(result).toContain(WHITE_WINS);
+                });
+            });
         });
 
         xit("final test", function(){
