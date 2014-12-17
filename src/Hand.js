@@ -1,7 +1,9 @@
 var Card = require('../src/Card.js');
+var RuleCompareValues = require('../src/rules/CompareValues.js');
 
 function Hand(){
     this.cards = [];
+    this.ruleCompareValues = new RuleCompareValues();
 }
 
 Hand.create = function(handString){
@@ -23,17 +25,20 @@ Hand.prototype.compareTo = function(otherHand){
     var numberOfCards = calculateNumberOfCards(this.cards);
     var numberOfCardsOtherHand = calculateNumberOfCards(otherHand.cards);
     var i;
+
     var until = Math.min(numberOfCards.length, numberOfCardsOtherHand.length);
     for (i=0; i < until; i++){
-        if (numberOfCards.length != numberOfCardsOtherHand.length){
-            return -(numberOfCards.length - numberOfCardsOtherHand.length);
-        } else if (numberOfCards[i]['v'] != numberOfCardsOtherHand[i]['v']){
-            return numberOfCards[i]['v'] - numberOfCardsOtherHand[i]['v'];
-        } else {
-            var diff = compareCards(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
-            if (diff != 0){
-                return diff;
-            }
+        var result = numberOfCards.length - numberOfCardsOtherHand.length;
+        if (result){
+            return -(result);
+        }
+        result = numberOfCards[i]['v'] - numberOfCardsOtherHand[i]['v'];
+        if (result){
+            return result;
+        }
+        result = this.ruleCompareValues.resolve(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
+        if (result){
+            return result;
         }
     }
 };
