@@ -159,12 +159,28 @@ describe("Poker", function(){
     });
 
     describe("Four of a kind is higher than Full House", function() {
-        it("Four of kind is wins to Full House", function () {
+        it("Four of kind wins to Full House", function () {
             var result = poker.play('Black: 4H 4S 4C 4D 6C White: 2D 2S 2C 3D 3C');
+            expect(result).toContain(BLACK_WINS);
+        });
+        it("Four of kind wins to Flush", function () {
+            var result = poker.play('Black: 4H 4S 4C 4D 6C White: 2D 3D 5D 7D 8D');
             expect(result).toContain(BLACK_WINS);
         });
         it("The higher four of a kind wins when both hands has Four of a kind", function () {
             var result = poker.play('Black: 4H 4D 4C 4S 5D White: 6H 6D 6C 6S 7D');
+            expect(result).toContain(WHITE_WINS);
+        });
+    });
+
+    describe("Straight flush is higher than Four of a kind", function() {
+        it("Straight flush is wins to Four of a kind", function () {
+            var result = poker.play('Black: 2D 3D 4D 5D 6D White: 4H 4S 4C 4D 7C');
+            expect(result).toContain(BLACK_WINS);
+        });
+
+        it("The higher straight flush wins when both hands has straight flush", function () {
+            var result = poker.play('Black: 2D 3D 4D 5D 6D White: 3C 4C 5C 6C 7C');
             expect(result).toContain(WHITE_WINS);
         });
     });
