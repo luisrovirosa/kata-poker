@@ -1,10 +1,11 @@
+var Straight = require('./Straight.js');
 var RuleThreeOfAKind = require('./ThreeOfAKind.js');
 var RuleTwoPairs = require('./TwoPairs.js');
 var RulePair = require('./Pair.js');
 var HighCard = require('./HighCard.js');
 
 function PokerRules(){
-    this.rules = [new RuleThreeOfAKind(), new RuleTwoPairs(), new RuleTwoPairs(), new RulePair(), new HighCard()];
+    this.rules = [new Straight(), new RuleThreeOfAKind(), new RuleTwoPairs(), new RuleTwoPairs(), new RulePair(), new HighCard()];
 }
 
 
