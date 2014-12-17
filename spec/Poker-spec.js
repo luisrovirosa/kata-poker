@@ -84,5 +84,10 @@ describe("Poker", function(){
             var result = poker.play('Black: 2H 9D 9D 7C 5S White: 3H TH TS 8C 2C');
             expect(result).toContain(WHITE_WINS);
         });
+
+        it("Same pair wins the next higher card", function(){
+            var result = poker.play('Black: 2H 9D 9D 7C 5S White: 3H 9H 9S 8C 2C');
+            expect(result).toContain(WHITE_WINS);
+        });
     });
 });
