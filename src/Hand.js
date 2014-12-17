@@ -1,9 +1,11 @@
 var Card = require('../src/Card.js');
-var RuleCompareValues = require('../src/rules/CompareValues.js');
+var CompareValues = require('../src/rules/CompareValues.js');
+var RuleThreeOfAKind = require('../src/rules/ThreeOfAKind.js');
 
 function Hand(){
     this.cards = [];
-    this.ruleCompareValues = new RuleCompareValues();
+    this.compareValues = new CompareValues();
+    this.ruleThreeOfAKind = new RuleThreeOfAKind();
 }
 
 Hand.create = function(handString){
@@ -18,19 +20,26 @@ Hand.prototype.compareTo = function(otherHand){
     // Count the number of cards
     var numberOfCards = this.calculateNumberOfCards();
     var numberOfCardsOtherHand = otherHand.calculateNumberOfCards();
-    var i;
+    var i, result;
 
-    var until = Math.min(numberOfCards.length, numberOfCardsOtherHand.length);
-    var result = numberOfCards.length - numberOfCardsOtherHand.length;
+    // Rules
+    result = this.ruleThreeOfAKind.compare(this, otherHand);
+    if (result){
+        return result;
+    }
+
+
+    result = numberOfCards.length - numberOfCardsOtherHand.length;
     if (result){
         return -(result);
     }
+    var until = Math.min(numberOfCards.length, numberOfCardsOtherHand.length);
     for (i=0; i < until; i++){
         result = numberOfCards[i]['v'] - numberOfCardsOtherHand[i]['v'];
         if (result){
             return result;
         }
-        result = this.ruleCompareValues.compare(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
+        result = this.compareValues.compare(numberOfCards[i]['k'], numberOfCardsOtherHand[i]['k']);
         if (result){
             return result;
         }
@@ -44,7 +53,7 @@ Hand.prototype.calculateNumberOfCards = function(){
     });
     var self = this;
     var sortDescByNumberOfCards = function(a, b) {
-        return -(numberOfCards[a]-numberOfCards[b])*100 - self.ruleCompareValues.compare(a, b);
+        return -(numberOfCards[a]-numberOfCards[b])*100 - self.compareValues.compare(a, b);
     };
     numberOfCards = Object.keys(numberOfCards).sort(sortDescByNumberOfCards).map(function(k){
         return {k: k, v:numberOfCards[k]};
