@@ -136,10 +136,10 @@ describe("Poker", function(){
         });
     });
 
-    //describe("Flush is higher than Straight", function() {
-    //    it("All the cards of the same suit are higher than straight", function () {
-    //        var result = poker.play('Black: 2H 3H 4C 5C 6C White: 2D 3D 5D 7D 8D');
-    //        expect(result).toContain(WHITE_WINS);
-    //    });
-    //});
+    describe("Flush is higher than Straight", function() {
+        it("All the cards of the same suit are higher than straight", function () {
+            var result = poker.play('Black: 2H 3H 4C 5C 6C White: 2D 3D 5D 7D 8D');
+            expect(result).toContain(WHITE_WINS);
+        });
+    });
 });

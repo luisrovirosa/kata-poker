@@ -48,5 +48,9 @@ Hand.prototype.getCardGroup = function(num){
     return this.cardsByGroups[num];
 };
 
+Hand.prototype.getCards = function(){
+    return this.cards;
+};
+
 
 module.exports = Hand;
