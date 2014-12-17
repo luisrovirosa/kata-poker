@@ -56,4 +56,11 @@ describe("Poker", function(){
             expect(result).toBe('White wins. - with high card: Ace');
         });
     });
+
+    describe("Pair wins a High card", function(){
+        it("Pair of 2 is higher than no pair with Ace", function(){
+            var result = poker.play('Black: 2H 3D 3D 7C 5S White: 3H 9H AS 8C 2C');
+            expect(result).toContain(BLACK_WINS);
+        });
+    });
 });
