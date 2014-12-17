@@ -141,9 +141,21 @@ describe("Poker", function(){
             var result = poker.play('Black: 2H 3H 4C 5C 6C White: 2D 3D 5D 7D 8D');
             expect(result).toContain(WHITE_WINS);
         });
-        it("The higher card wins then both hands has Flush", function () {
+        it("The higher card wins when both hands has Flush", function () {
             var result = poker.play('Black: 2H 3H 4H 9H 6H White: 2D 3D 5D 7D 8D');
             expect(result).toContain(BLACK_WINS);
         });
     });
+
+    describe("Full House is higher than Flush", function() {
+        it("Three of kind and a pair wins to flush", function () {
+            var result = poker.play('Black: 2H 3H 4C 5C 6C White: 2D 2S 2C 3D 3C');
+            expect(result).toContain(WHITE_WINS);
+        });
+        it("The higher three of a kind wins when hands has Flush", function () {
+            var result = poker.play('Black: 4H 4D 4C 5C 5D White: 2D 2S 2C 3D 3C');
+            expect(result).toContain(BLACK_WINS);
+        });
+    });
+
 });
