@@ -13,4 +13,8 @@ HighCard.prototype.until = function () {
     return 999;
 };
 
+HighCard.prototype.name = function () {
+    return 'high card'
+};
+
 module.exports = HighCard;

@@ -1,3 +1,5 @@
+# Kata Poker
+http://codingdojo.org/cgi-bin/index.pl?KataPokerHands
 # Install the environment
 	npm install
 # Run a round

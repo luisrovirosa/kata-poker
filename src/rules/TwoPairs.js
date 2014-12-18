@@ -14,5 +14,8 @@ TwoPairs.prototype.until = function () {
     return 2;
 };
 
+TwoPairs.prototype.name = function(){
+    return 'two pairs';
+};
 
 module.exports = TwoPairs;

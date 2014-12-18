@@ -14,4 +14,8 @@ Flush.prototype.belongs = function (hand) {
     return true;
 };
 
+Flush.prototype.name = function(){
+    return 'flush';
+};
+
 module.exports = Flush;

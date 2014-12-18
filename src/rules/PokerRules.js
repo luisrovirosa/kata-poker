@@ -7,6 +7,8 @@ var RuleThreeOfAKind = require('./ThreeOfAKind.js');
 var RuleTwoPairs = require('./TwoPairs.js');
 var RulePair = require('./Pair.js');
 var HighCard = require('./HighCard.js');
+var Result = require('./Result.js');
+
 
 function PokerRules() {
     this.rules = [
@@ -27,10 +29,12 @@ PokerRules.prototype.compare = function (hand, otherHand) {
     for (var i = 0; i < this.rules.length; i++) {
         var rule = this.rules[i];
         var result = rule.compare(hand, otherHand);
+        //console.log(result);
         if (result) {
             return result;
         }
     }
+    return new Result(null, null);
 };
 
 module.exports = PokerRules;

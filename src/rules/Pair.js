@@ -8,4 +8,8 @@ Pair.prototype.belongs = function (hand) {
     return hand.getCardGroup(0).v == 2;
 };
 
+Pair.prototype.name = function () {
+    return 'pair';
+};
+
 module.exports = Pair;

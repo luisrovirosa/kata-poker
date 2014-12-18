@@ -21,12 +21,7 @@ function getCards(color, line) {
 
 Poker.prototype.getWinner = function (blackHand, whiteHand) {
     var result = this.rules.compare(blackHand, whiteHand);
-    if (result < 0) {
-        return "White wins.";
-    } else if (result > 0) {
-        return "Black wins.";
-    }
-    return "Tie.";
+    return result.getMessage();
 };
 
 module.exports = Poker;

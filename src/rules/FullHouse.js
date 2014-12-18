@@ -8,4 +8,8 @@ FullHouse.prototype.belongs = function (hand) {
     return hand.getCardGroup(0).v == 3 && hand.getCardGroup(1).v == 2;
 };
 
+FullHouse.prototype.name = function () {
+    return 'full house';
+};
+
 module.exports = FullHouse;

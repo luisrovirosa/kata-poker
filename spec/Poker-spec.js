@@ -187,7 +187,7 @@ describe("Poker", function(){
         });
     });
 
-    xdescribe("Suggested test cases - with strategy used to win", function(){
+    describe("Suggested test cases - with strategy used to win", function(){
         it("White wins. - with high card: Ace", function(){
             var result = poker.play('Black: 2H 3D 5S 9C KD White: 2C 3H 4S 8C AH');
             expect(result).toBe('White wins. - with high card: Ace');

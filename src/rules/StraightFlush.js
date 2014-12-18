@@ -14,4 +14,8 @@ StraightFlush.prototype.belongs = function (hand) {
     return true;
 };
 
+StraightFlush.prototype.name = function(){
+    return 'straight flush';
+};
+
 module.exports = StraightFlush;

@@ -13,4 +13,8 @@ Straight.prototype.belongs = function (hand) {
     return true;
 };
 
+Straight.prototype.name = function () {
+    return 'straight';
+};
+
 module.exports = Straight;
