@@ -6,7 +6,7 @@ FourOfAKind.prototype = new BaseRule();
 
 
 FourOfAKind.prototype.belongs = function (hand) {
-    return hand.getCardGroup(0).v == 4;
+    return hand.getNumberOfCardFromGroup(0) == 4;
 };
 
 FourOfAKind.prototype.name = function(){

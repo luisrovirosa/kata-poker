@@ -6,7 +6,7 @@ ThreeOfAKind.prototype = new BaseRule();
 
 
 ThreeOfAKind.prototype.belongs = function (hand) {
-    return hand.getCardGroup(0).v == 3;
+    return hand.getNumberOfCardFromGroup(0) == 3;
 };
 
 ThreeOfAKind.prototype.name = function(){

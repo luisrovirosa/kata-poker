@@ -6,7 +6,7 @@ Straight.prototype = new BaseRule();
 
 Straight.prototype.belongs = function (hand) {
     for (var i = 0; i < 4; i++) {
-        if (1 != this.cardValues.compare(hand.getCardGroup(i).k, hand.getCardGroup(i + 1).k)) {
+        if (-1 != this.compareCards(hand.getValueOfCard(i), hand.getValueOfCard(i + 1))) {
             return false;
         }
     }

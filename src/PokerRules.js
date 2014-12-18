@@ -26,15 +26,15 @@ function PokerRules() {
 }
 
 PokerRules.prototype.compare = function (hand, otherHand) {
-    for (var i = 0; i < this.rules.length; i++) {
+    var result,
+        i = 0,
+        num = this.rules.length;
+    do {
         var rule = this.rules[i];
-        var result = rule.compare(hand, otherHand);
-        //console.log(result);
-        if (result) {
-            return result;
-        }
-    }
-    return new Result();
+        result = rule.compareHands(hand, otherHand);
+        i++;
+    } while (!result && i < num);
+    return result ? result : new Result();
 };
 
 module.exports = PokerRules;

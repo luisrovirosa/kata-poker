@@ -5,7 +5,7 @@ function FullHouse() {
 FullHouse.prototype = new BaseRule();
 
 FullHouse.prototype.belongs = function (hand) {
-    return hand.getCardGroup(0).v == 3 && hand.getCardGroup(1).v == 2;
+    return hand.getNumberOfCardFromGroup(0) == 3 && hand.getNumberOfCardFromGroup(1) == 2;
 };
 
 FullHouse.prototype.name = function () {

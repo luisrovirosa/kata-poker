@@ -5,7 +5,7 @@ function Pair() {
 Pair.prototype = new BaseRule();
 
 Pair.prototype.belongs = function (hand) {
-    return hand.getCardGroup(0).v == 2;
+    return hand.getNumberOfCardFromGroup(0) == 2;
 };
 
 Pair.prototype.name = function () {
