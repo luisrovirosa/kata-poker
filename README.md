@@ -57,12 +57,15 @@ Each row of input is a game with two players. The first five cards belong to the
 	Tie.
 
 
-# Install the environment
+# Running the code
+## Download the source
+	git clone https://github.com/luisrovirosa/kata-poker.git
+##Install the environment
 	npm install
-# Run a round
+## Run a round
 	gulp play --cards <cards>
 Example:
 
 	gulp play --cards "Black: 2H 9D 3D 7C 5S White: 3H 9H 4S 8C 2C"
-# Execute all the tests
+## Execute all the tests
 	gulp jasmine
