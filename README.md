@@ -61,8 +61,12 @@ Each row of input is a game with two players. The first five cards belong to the
 ## Download the source
 	git clone https://github.com/luisrovirosa/kata-poker.git
 ##Install the environment
+[How to install npm](http://nodejs.org/download/)
+
 	npm install
 ## Run a round
+[How to install gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md#getting-started)
+
 	gulp play --cards <cards>
 Example:
 
