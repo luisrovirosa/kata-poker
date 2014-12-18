@@ -1,12 +1,12 @@
-var StraightFlush = require('./StraightFlush.js');
-var FourOfAKind = require('./FourOfAKind.js');
-var FullHouse = require('./FullHouse.js');
-var Flush = require('./Flush.js');
-var Straight = require('./Straight.js');
-var RuleThreeOfAKind = require('./ThreeOfAKind.js');
-var RuleTwoPairs = require('./TwoPairs.js');
-var RulePair = require('./Pair.js');
-var HighCard = require('./HighCard.js');
+var StraightFlush = require('./rules/StraightFlush.js');
+var FourOfAKind = require('./rules/FourOfAKind.js');
+var FullHouse = require('./rules/FullHouse.js');
+var Flush = require('./rules/Flush.js');
+var Straight = require('./rules/Straight.js');
+var RuleThreeOfAKind = require('./rules/ThreeOfAKind.js');
+var RuleTwoPairs = require('./rules/TwoPairs.js');
+var RulePair = require('./rules/Pair.js');
+var HighCard = require('./rules/HighCard.js');
 var Result = require('./Result.js');
 
 
@@ -34,7 +34,7 @@ PokerRules.prototype.compare = function (hand, otherHand) {
             return result;
         }
     }
-    return new Result(null, null);
+    return new Result();
 };
 
 module.exports = PokerRules;

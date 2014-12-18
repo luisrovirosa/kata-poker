@@ -1,5 +1,5 @@
-var Hand = require('../src/Hand.js');
-var Rules = require('./rules/PokerRules.js');
+var Hand = require('./Hand.js');
+var Rules = require('./PokerRules.js');
 
 function Poker() {
     this.BLACK = 1;

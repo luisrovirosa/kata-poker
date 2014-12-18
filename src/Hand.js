@@ -1,10 +1,10 @@
 var Card = require('../src/Card.js');
-var CompareValues = require('../src/rules/CompareValues.js');
+var CompareValues = require('../src/rules/CardValues.js');
 
 function Hand() {
     this.cards = [];
     this.cardsByGroups = [];
-    this.compareValues = new CompareValues();
+    this.cardValues = new CompareValues();
     this.groupCards = function () {
         var numberOfCards = {};
         this.cards.forEach(function (card) {
@@ -12,7 +12,7 @@ function Hand() {
         });
         var self = this;
         var sortDescByNumberOfCards = function (a, b) {
-            return -(numberOfCards[a] - numberOfCards[b]) * 100 - self.compareValues.compare(a, b);
+            return -(numberOfCards[a] - numberOfCards[b]) * 100 - self.cardValues.compare(a, b);
         };
         numberOfCards = Object.keys(numberOfCards).sort(sortDescByNumberOfCards).map(function (k) {
             return {k: k, v: numberOfCards[k]};

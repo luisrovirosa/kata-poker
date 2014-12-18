@@ -1,4 +1,4 @@
-function CompareValues() {
+function CardValues() {
 
 }
 
@@ -7,9 +7,9 @@ var compareValues = function (a, b) {
     return valueOrder.indexOf(a) - valueOrder.indexOf(b);
 };
 
-CompareValues.prototype.compare = function (value, anotherValue) {
+CardValues.prototype.compare = function (value, anotherValue) {
     return compareValues(value, anotherValue);
 };
 
-module.exports = CompareValues;
+module.exports = CardValues;
 
