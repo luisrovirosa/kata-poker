@@ -34,7 +34,7 @@ PokerRules.prototype.resolve = function (hand, otherHand) {
         result = rule.compareHands(hand, otherHand);
         currentRuleNumber++;
     } while (!result && currentRuleNumber < numRules);
-    return result ? result : new Result();
+    return result ? result : Result.Tie();
 };
 
 module.exports = PokerRules;

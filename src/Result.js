@@ -13,4 +13,8 @@ Result.prototype.getMessage = function () {
     return this.winner + ' wins. - with ' + this.rule.name() + this.winningCard;
 };
 
+Result.Tie = function(){
+    return new Result();
+};
+
 module.exports = Result;
