@@ -20,7 +20,7 @@ function getCards(color, line) {
 }
 
 Poker.prototype.getWinner = function (blackHand, whiteHand) {
-    var result = this.rules.compare(blackHand, whiteHand);
+    var result = this.rules.resolve(blackHand, whiteHand);
     return result.getMessage();
 };
 

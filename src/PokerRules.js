@@ -25,15 +25,15 @@ function PokerRules() {
     ];
 }
 
-PokerRules.prototype.compare = function (hand, otherHand) {
+PokerRules.prototype.resolve = function (hand, otherHand) {
     var result,
-        i = 0,
-        num = this.rules.length;
+        currentRuleNumber = 0,
+        numRules = this.rules.length;
     do {
-        var rule = this.rules[i];
+        var rule = this.rules[currentRuleNumber];
         result = rule.compareHands(hand, otherHand);
-        i++;
-    } while (!result && i < num);
+        currentRuleNumber++;
+    } while (!result && currentRuleNumber < numRules);
     return result ? result : new Result();
 };
 
